@@ -106,7 +106,6 @@ class RocketDetailDialog(QDialog):
         self.image_label = QLabel()
         self.load_launch_image()
         
-        # Resmi değiştir butonu
         change_image_btn = ModernButton("Change Launch Image", "#3a86ff")
         change_image_btn.clicked.connect(self.change_launch_image)
         image_layout.addWidget(change_image_btn)
@@ -150,20 +149,19 @@ class RocketDetailDialog(QDialog):
         pixmap = QPixmap()
         image_loaded = False
         
-        # 1. Fırlatmaya özel resmi kontrol et
+        
         launch_image_path = self.parent_gui.get_launch_specific_image(self.launch_id)
         if launch_image_path and os.path.exists(launch_image_path):
             if pixmap.load(launch_image_path):
                 image_loaded = True
         
-        # 2. Roketin genel resmini kontrol et
         if not image_loaded:
             rocket_image_path = self.parent_gui.get_rocket_image_path(self.rocket_info['name'])
             if rocket_image_path and os.path.exists(rocket_image_path):
                 if pixmap.load(rocket_image_path):
                     image_loaded = True
 
-        # 3. Varsayılan kullanıcı resmini kontrol et
+     
         if not image_loaded:
             fallback_image_path = "assets/M3k.jpg"
             if os.path.exists(fallback_image_path):
@@ -197,7 +195,6 @@ class RocketDetailDialog(QDialog):
                 if os.path.exists(specific_file):
                     return specific_file
             
-            # Genel dosya arama (fallback)
             for file in os.listdir(rocket_folder):
                 if file.lower().endswith(('.png', '.jpg', '.jpeg')):
                     return os.path.join(rocket_folder, file)
