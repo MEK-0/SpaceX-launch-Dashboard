@@ -3,7 +3,7 @@ import csv
 import json
 from datetime import datetime
 
-# SpaceX resmi API'sini kullan
+# SpaceX resmi API'si
 url = "https://api.spacexdata.com/v4/launches"
 
 try:
@@ -13,10 +13,10 @@ try:
     if response.status_code == 200:
         data = response.json()
         
-        # CSV için veri hazırla
+        # CSV için veri 
         rows = []
         for launch in data:
-            # Temel bilgileri al
+            
             row = {
                 "id": launch.get("id", ""),
                 "name": launch.get("name", ""),
@@ -39,7 +39,7 @@ try:
             }
             rows.append(row)
         
-        # CSV dosyasına yaz
+
         if rows:
             with open("../data/spacex_launches.csv", "w", newline="", encoding="utf-8") as f:
                 writer = csv.DictWriter(f, fieldnames=rows[0].keys())
