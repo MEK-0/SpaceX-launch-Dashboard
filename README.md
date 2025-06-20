@@ -43,8 +43,8 @@ To run the project on your local machine, follow these steps:
 ### 1. Clone the Project
 
 ```bash
-git clone https://github.com/your_username/project_name.git
-cd project_name
+git clone https://github.com/MEK-0/SpaceX-launch-Dashboard.git
+cd SpaceX-launch-Dashboard
 ```
 
 ### 2. Create Virtual Environment (Recommended)
